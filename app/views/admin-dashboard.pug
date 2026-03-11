@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h2 Admin Dashboard
+
+  h3 Summary
+  p Total Users: #{stats.total_users}
+  p Total Goals: #{stats.total_goals}
+  p Total Savings: ₦#{stats.total_savings}
+  p Total Withdrawals: #{stats.total_withdrawals}
+
+  h3 User Overview
+  if users.length
+    table(border="1", cellpadding="8")
+      thead
+        tr
+          th Full Name
+          th Email
+          th Total Goals
+          th Active Goals
+          th Inactive Goals
+      tbody
+        each user in users
+          tr
+            td= user.full_name
+            td= user.email
+            td= user.total_goals
+            td= user.active_goals
+            td= user.inactive_goals
+  else
+    p No users found.

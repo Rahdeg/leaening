@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h2 User Dashboard
+
+  .summary
+    h3 Welcome #{dashboard.full_name}
+    p Total Savings: ₦#{dashboard.total_savings}
+    p Total Goals: #{dashboard.total_goals}
+
+  h3 My Goals
+  if goals.length
+    table(border="1", cellpadding="8")
+      thead
+        tr
+          th Title
+          th Category
+          th Target
+          th Current
+          th Status
+          th End Date
+          th Action
+      tbody
+        each goal in goals
+          tr
+            td= goal.goal_title
+            td= goal.category_name
+            td ₦#{goal.target_amount}
+            td ₦#{goal.current_amount}
+            td= goal.goal_status
+            td= goal.end_date
+            td
+              a(href=`/goals/${goal.goal_id}`) View
+  else
+    p No goals found.
+
+  h3 Recent Activity
+  if activities.length
+    ul
+      each activity in activities
+        li #{activity.activity_type} - #{activity.activity_message} (#{activity.created_at})
+  else
+    p No recent activity found.

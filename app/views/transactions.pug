@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h2 Transactions for Goal #{goalId}
+
+  if transactions.length
+    table(border="1", cellpadding="8")
+      thead
+        tr
+          th Transaction ID
+          th Type
+          th Amount
+          th Reference
+          th Status
+          th Payment Method
+          th Date
+      tbody
+        each transaction in transactions
+          tr
+            td= transaction.transaction_id
+            td= transaction.transaction_type
+            td ₦#{transaction.amount}
+            td= transaction.transaction_reference
+            td= transaction.transaction_status
+            td #{transaction.method_name} (#{transaction.provider_name})
+            td= transaction.transaction_date
+  else
+    p No transactions found.

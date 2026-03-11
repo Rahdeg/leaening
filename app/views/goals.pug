@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h2 My Savings Goals
+  - console.log(goals)
+  if goals.length
+    table(border="1", cellpadding="8")
+      thead
+        tr
+          th Title
+          th Category
+          th Target Amount
+          th Current Amount
+          th Status
+          th End Date
+          th Details
+      tbody
+        each goal in goals
+          tr
+            td= goal.goal_title
+            td= goal.category_name
+            td ₦#{goal.target_amount}
+            td ₦#{goal.current_amount}
+            td= goal.goal_status
+            td= goal.end_date
+            td
+              a(href=`/goals/${goal.goal_id}`) View Goal
+  else
+    p No savings goals available.

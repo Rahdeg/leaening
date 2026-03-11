@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    header
+      h1 SAVIFY
+      nav
+        a(href="/") Home
+        |  | 
+        a(href="/dashboard") Dashboard
+        |  | 
+        a(href="/goals") Goals
+        |  | 
+        a(href="/admin/dashboard") Admin
+    main
+      block content
